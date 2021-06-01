@@ -1,0 +1,35 @@
+.movie-card {
+  border: 1px solid lightgrey;
+  border-radius: 5px;
+}
+
+.movie-card img {
+  border-radius: 5px 5px 0px 0px;
+  max-width: 100%;
+}
+
+.movie-details {
+  padding: 5px 5px 10px 5px;
+}
+
+.movie-genre {
+  border: 1px solid lightgrey;
+  border-radius: 15px;
+  padding: 0px 8px;
+  display: inline-block;
+  margin: 5px 5px 0px 0px;
+}
+
+.sort-icon {
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+.movie-favorite {
+  position: absolute;
+}
+
+.favourite-btn {
+  border-radius: 0;
+  border-top: 0
+}

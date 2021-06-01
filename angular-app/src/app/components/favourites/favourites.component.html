@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="row mt-2">
+    <div class="col-3 mb-3" *ngFor="let movie of favouritesList; let movieIndex = index;">
+      <div class="movie-card">
+        <img [src]="movie.Cover">
+        <button type="button" class="btn btn-danger btn-sm btn-block favourite-btn" (click)="removeFromFavourite(movie.Id, movieIndex)">Remove from favourites</button>
+
+        <div class="movie-details">
+          <div class="movie-genre" *ngFor="let genre of movie.Genres">{{genre}}</div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>
