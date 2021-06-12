@@ -1,5 +1,6 @@
 import './../Home/Home.css'
 import { useEffect, useState } from 'react';
+import FavouriteMovieCard from '../MovieCard/FavouriteMovieCard';
 
 const Favourites = () => {
   const [favouriteList, setfavouriteList] = useState([])
@@ -19,36 +20,28 @@ const Favourites = () => {
     setfavouriteList(favouritesArr);
   }, [])
 
-  const removeFromFavourite = (movieId, movieIndex) => {
+  const changeFavouriteList = (id) => {
     let favourites = [...favouriteList];
-    favourites.splice(movieIndex, 1);
+    const index = favourites.findIndex(x => x.Id === id);
 
-    setfavouriteList(favourites);
-
-    localStorage.removeItem(movieId.toString());
+    if(index > -1) {
+      favourites.splice(index, 1);
+  
+      setfavouriteList(favourites);
+    }
   }
 
   return (
     <div className="container">
       <div className="row mt-2">
-        {favouriteList.map((movie, i) => (
-          <div className="col-3 mb-3" key={`favourite-movie-${i}`}>
-            <div className="movie-card">
-              <img src={movie.Cover} alt=""/>
-              <button type="button" className="btn btn-danger btn-sm btn-block favourite-btn" onClick={() => removeFromFavourite(movie.Id, i)}>Remove from favourites</button>
-
-              <div className="movie-details">
-                {movie.Genres.map((genre, genreId) => (
-                  <div className="movie-genre" key={`movie-${i}-genre-${genreId}`}>{genre}</div>
-                ))}                
-              </div>
-            </div>
+        {favouriteList.map((movie) => (
+          <div className="col-3 mb-3" key={`favourite-movie-${movie.Id}`}>
+            <FavouriteMovieCard Movie={movie} changeList={changeFavouriteList}/>
           </div>
         ))}
       </div>
     </div>
   )
 }
-
 
 export default Favourites;
